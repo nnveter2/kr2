@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Арены{% endblock %}
+{% block content %}
+<h1>Арены</h1>
+<ul class="list">
+  {% for arena in arenas %}
+    <li class="card">
+      <h2>{{ arena.name }}</h2>
+      <p>Вместимость: {{ arena.capacity }} игроков</p>
+      <p>Тип: {{ arena.arena_kind }}</p>
+    </li>
+  {% empty %}
+    <li class="empty">Арен пока нет.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

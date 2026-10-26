@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Статистика{% endblock %}
+{% block content %}
+<h1>Статистика игр</h1>
+<p>Режимы, в которых не менее {{ min_count }} игр:</p>
+<form method="get" class="filter">
+  <label>Минимум игр <input type="number" name="min" min="1" value="{{ min_count }}"></label>
+  <button class="btn" type="submit">Показать</button>
+</form>
+{% if stats %}
+<table class="stats">
+  <tr><th>Тип игры</th><th>Количество</th></tr>
+  {% for row in stats %}
+    <tr><td>{{ row.game_mode|upper }}</td><td>{{ row.games_count }}</td></tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="empty">Нет режимов, удовлетворяющих условию.</p>
+{% endif %}
+{% endblock %}

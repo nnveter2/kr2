@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Не найдено{% endblock %}
+{% block content %}
+<h1>404 — страница не найдена</h1>
+<p class="empty">Такой игры или страницы нет.</p>
+<p><a href="{% url 'games:list' %}">← К списку игр</a></p>
+{% endblock %}

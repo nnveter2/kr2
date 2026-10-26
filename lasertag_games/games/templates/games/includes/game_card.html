@@ -1,0 +1,13 @@
+<li class="card{% if game.status == 'идёт' %} live{% elif game.status == 'завершена' %} done{% endif %}">
+  <h2><a href="{% url 'games:detail' game.slug %}">{{ game.title|truncatechars:30 }}</a></h2>
+  <p>Тип: {{ game.game_mode|upper }}</p>
+  <p>Дата: {{ game.start_date|date:"d.m.Y" }}</p>
+  <p>Продолжительность: {{ game.duration }} мин · Игроков: {{ game.players }}</p>
+  <p>Арена: {{ game.arena_name|default:"Арена не указана" }}</p>
+  <p class="status">
+    {% if game.status == 'запланирована' %}Набор в команды
+    {% elif game.status == 'идёт' %}Бой идёт
+    {% elif game.status == 'завершена' %}Итоги подведены
+    {% else %}{{ game.status }}{% endif %}
+  </p>
+</li>

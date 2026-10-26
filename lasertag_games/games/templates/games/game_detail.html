@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}{{ game.title }}{% endblock %}
+{% block content %}
+<h1>{{ game.title }}</h1>
+<ul class="details">
+  <li>Тип: {{ game.game_mode|upper }}</li>
+  <li>Дата: {{ game.start_date|date:"d.m.Y" }}</li>
+  <li>Продолжительность: {{ game.duration }} мин</li>
+  <li>Игроков: {{ game.players }}</li>
+  <li>Статус: {{ game.status }}</li>
+</ul>
+<button class="btn" id="toggle-arena" type="button">Показать арену</button>
+<div id="arena-info" hidden>
+  <h2>Арена</h2>
+  <p>Название: {{ game.arena_name|default:"Арена не указана" }}</p>
+  <p>Вместимость: {{ game.arena_capacity|default:"—" }}</p>
+  <p>Тип арены: {{ game.arena_kind|default:"—" }}</p>
+</div>
+<p><a href="{% url 'games:list' %}">← К списку игр</a></p>
+{% endblock %}

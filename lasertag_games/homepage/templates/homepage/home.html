@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Главная — Лазертаг{% endblock %}
+{% block content %}
+<h1>Игры в лазертаг</h1>
+<p>Расписание игр, арены и статистика клуба лазертага.</p>
+<p class="big">Всего игр: {{ games|length }}.</p>
+<p class="muted">(по данным SQL: {{ games_total }})</p>
+<p>
+  <a class="btn" href="{% url 'arenas:list' %}">Арены</a>
+  <a class="btn" href="{% url 'games:list' %}">Список игр</a>
+</p>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Игры{% endblock %}
+{% block content %}
+<h1>Игры</h1>
+<form method="get" action="{% url 'games:list' %}" class="filter">
+  <label>Минимум игроков
+    <input type="number" name="players" min="0" value="{{ min_players }}">
+  </label>
+  <label>Сортировка
+    <select name="sort">
+      {% for key, label in sort_options %}
+        <option value="{{ key }}"{% if key == sort %} selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Показать не более
+    <input type="number" name="limit" min="1" value="{{ limit }}">
+  </label>
+  <button class="btn" type="submit">Применить</button>
+</form>
+<ul class="list">
+  {% for game in games %}
+    {% include 'games/includes/game_card.html' %}
+  {% empty %}
+    <li class="empty">Игр с такими параметрами не найдено.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

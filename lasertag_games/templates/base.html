@@ -1,0 +1,27 @@
+{% load static %}<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Лазертаг{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{% url 'homepage:home' %}">
+      <img src="{% static 'img/logo.png' %}" alt="Логотип" width="40" height="40">
+      <span>Игры в лазертаг</span>
+    </a>
+    <nav class="nav">
+      <a href="{% url 'homepage:home' %}">Главная</a>
+      <a href="{% url 'arenas:list' %}">Арены</a>
+      <a href="{% url 'games:list' %}">Игры</a>
+      <a href="{% url 'games:statistics' %}">Статистика</a>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
